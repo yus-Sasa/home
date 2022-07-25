@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/p5.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/addons/p5.dom.min.js"></script>
+  <script src="sketch.js"></script>
+  <script src="interface.js"></script>
+  <link rel = "stylesheet" href="style.css">
+  <meta name="robots" content="noindex,nofollow,noarchive" />
+</head>
+ 
+<body>
+<div class="wrapper">
+  <header class="header">
+    <nav class="nav">
+      <ul>
+        <li><a href = "../index.html">ホーム</a></li>
+        <li><a href = "../profile.html">プロフィール</a></li>
+        <li><a href = "../study.html">研究内容</a></li>
+        <li><a href = "../works.html">作品集</a></li>
+        <li><a href = "../skill.html">スキル</a></li>
+      </ul>
+    </nav>
+  </header>
+
+
+  <div id="P5Canvas" class="canvas">
+    <h1 class="title">Force</h1>
+  </div>
+
+  <main>
+    <h2 class="mini-title">UIの使い方</h2>
+    <p class="use">Start→描画開始/再開</p>
+    <p class="use">Pause→描画を一時停止</p>
+    <p class="use">Reset→描画を初期化</p>
+    <p class="use">Save→描画を保存</p>
+    <p class="use">white/black→背景色の指定</p>
+    <p class="use">color/red/green/blue→軌跡の色の指定</p>
+    <p class="use">(数字)→質点の数の指定</p>
+    <p class="use">※下段の指定を反映するには描画の初期化が必要</p>
+
+
+    <h2 class="mini-title">コンセプト</h2>
+    <p class="concept">0個以上の質点が，格子状に配置された物体に重力を作用させ，引き寄せていく。各物体には初期速度が与えられている。フレームごとにその速度が変化し，物体は速度の分だけ移動し，軌跡を描く。速さが大きいほど軌跡の線が細い。ただし，物体は1フレームの間に上下左右のいずれか1つの方向にしか進めないという制約をつけている。</p>
+    <p class="concept">なお，力と速度の計算は，実際の物理法則とは敢えて異なるものにしている。</p>
+  </main>  
+
+  <footer class="footer">
+    <p class="copyright"><small>&copy;2022 Y.Sasakawa</small></p>
+  </footer>
+</div>
+</body>
+ 
+</html>
