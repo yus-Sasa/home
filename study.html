@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.2/p5.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.min.js"></script>
+  <link rel = "stylesheet" href="style.css">
+  <link rel = "stylesheet" href="style_study.css">
+  <meta name="robots" content="noindex,nofollow,noarchive" />
+</head>
+ 
+<body>
+<div class="wrapper">
+  <header class="header">
+    <nav class="nav">
+      <ul>
+        <li><a href = "index.html">ホーム</a></li>
+        <li><a href = "study.html">研究内容</a></li>
+        <li><a href = "works.html">作品集</a></li>
+      </ul>
+    </nav>
+  </header>
+
+
+
+  <main>
+    <h1 class="title">研究内容</h1>
+    <div class="content">
+      <p class="theme"><b>「区分線形的なグラデーション領域を含むラスタ画像のベクタ変換｣</b>（2021/2~2022/2）</p>
+      <p>ベクタ画像を手作業で作成する場合，画像を構成する各図形の形状と属性を決めて，適切に配置する必要があり，見映えのする画像を作成するのは大変である。そのような問題を解消するため，ラスタ画像を変換してベクタ画像を作成するツールがある。しかし，ラスタ画像にグラデーション領域が存在する場合に，それをグラデーションの属性をもつ領域へと変換できるツールは見当たらない。そこで，色の変化の方向が一定であるようなグラデーション領域を含むラスタ画像を対象として、そのような画像を高品質で編集が容易なベクタ画像に変換する手法を提案した。</p>
+      <p class="example">（変換結果例）順に原画像，本手法での変換結果，変換結果の領域の境界</p>
+
+      <div class='imglist'>
+        <div class="block"><img src="original.png" alt="原画像"></div>
+        <div class="block"><img src="conversion.png" alt="変換結果"></div>
+        <div class="block"><img src="region.png" alt="領域の境界"></div>
+      </div>
+      
+      <p><small>原画像出典：<a href="https://illustimage.com/?id=2631">https://illustimage.com/?id=2631</a></small></p>
+
+      <p class="theme subsequent"><b>「transformerを用いたピアノの運指推定」</b>(2022/3~)</p>
+      <p>楽譜中の音と，それを演奏する指の対応関係（運指）は楽器を演奏する上で重要な情報である。ピアノにおいては，特に初心者にとって，適切な運指を推定することは容易ではないため，自動での運指推定が可能になれば，誰もが適切な運指で演奏できるようになる。<br>
+      これまでも運指を推定する研究は実施されていて，初期では，運指のコストを設計して最適化問題を解くことで推定する手法などが使われた。近年になって，教師付きデータセットが少しずつ充実してきて以降は，統計モデルや深層学習による手法も研究されている。本研究では，自然言語処理の分野で高い精度を出した深層学習モデルtransformerを用いた運指推定を検討している。
+      </p>
+    </div>
+  </main>  
+
+  <footer class="footer">
+    <p class="copyright"><small>&copy;2022 Y.Sasakawa</small></p>
+  </footer>
+</div>
+</body>
+ 
+</html>

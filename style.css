@@ -42,6 +42,9 @@ ul {
 .title {
     margin: 20px 0 0 0;
 }
+.content {
+    margin-top: 15px;
+}
 canvas {
     border-top: dashed 2px #000500;
 }
