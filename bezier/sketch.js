@@ -7,18 +7,11 @@ var difference = [0, 0];    //選ばれた制御点と，マウス座標の差
 var selected;   //動かされている制御点のindex
 var bgcolor;    //canvas背景
 var selBg, selNum;    //セレクトボックス
-var slider;
+var slider, b;
 
 function setup() {
     //準備
     canvas = createCanvas(3840, 2160);  //これはただの入れ物であるcanvas
-    let centerWidth = document.getElementsByClassName('wrapper')[0].clientWidth;
-    let centerHeight = document.getElementsByClassName('wrapper')[0].clientHeight;
-    let scale = min(centerWidth / 3840, centerHeight / 2160);
-    let scaledWidth = min(scale * 3840, centerWidth);
-    let scaledHeight = min(scale * 2160, centerHeight);
-    canvas.style('width', String(scaledWidth)+'px');
-    canvas.style('height', String(scaledHeight)+'px');
     canvas.parent("P5Canvas");
     //そのcanvasの背景色設定
     let element = document.getElementsByClassName('wrapper')[0];
@@ -39,15 +32,10 @@ function setup() {
 
     //UIの配置
     //ボタン
-    var butPosX = (windowWidth - scaledWidth) / 2 + 7;
-    var butPosY = 104 + scaledHeight;
-    let b = createButton("Save");
+    b = createButton("Save");
     b.style("width", "55px");
-    b.position(butPosX, butPosY);
     b.mousePressed(saveImg);
     //セレクトボックス
-    var selPosX = butPosX;
-    var selPosY = butPosY + 35;
     let KeyArray = [
         ['white', 'black', 'none'], 
         ['3', '4', '5', '6', '7', '8', '9', '10', '100']
@@ -59,7 +47,6 @@ function setup() {
     let SelArray = [];
     for (let i = 0; i < KeyArray.length; i++) {
         let sel = createSelect();
-        sel.position(selPosX + 65*i, selPosY);
         for (let j = 0; j < KeyArray[i].length; j++) {
             sel.option(KeyArray[i][j], ValueArray[i][j]);
         }
@@ -72,12 +59,11 @@ function setup() {
     selNum.changed(reDraw); //点数の指定が変わったら初期化
     //色を決めるスライダー
     slider = createSlider(0, 1, 0, 0.01);
-    slider.position(selPosX + 130, selPosY);
     slider.style('width', '80px');
     slider.input(() => {
         drawMain();
       });
-
+    windowResized();
     //描画
     drawHandle();   //制御点をhandleに準備（canvasには描かない）
     drawMain(); //曲線，制御点をcanvasに描く

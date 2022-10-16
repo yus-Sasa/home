@@ -5,37 +5,27 @@ var factor1 = 0.2;  //隣り合った帯の乱雑さの差
 var factor2 = 0.01; //一つの帯内での乱雑さ
 var vortex;
 var canvas;
+var buttonArray = [];
 var selBg, selColor, selComposition;    //セレクトボックス
-var sliDiv, sliOff;
+var inpDiv, inpOff, txt;
 var none;   //画面をリセットしたときだけtrueになる
 
 function setup() {
     //準備
     canvas = createCanvas(1920, 1080, WEBGL);
-    let centerWidth = document.getElementsByClassName('wrapper')[0].clientWidth;
-    let centerHeight = document.getElementsByClassName('wrapper')[0].clientHeight;
-    let scale = min(centerWidth / 1920, centerHeight / 1080);
-    let scaledWidth = min(scale * 1920, centerWidth);
-    let scaledHeight = min(scale * 1080, centerHeight);
-    canvas.style('width', String(scaledWidth)+'px');
-    canvas.style('height', String(scaledHeight)+'px');
     canvas.parent("P5Canvas");
     //UIの配置
     //ボタン
-    var butPosX = (windowWidth - scaledWidth) / 2 + 7;
-    var butPosY = 104 + scaledHeight;
     var buttonNameArray = ['Reset', 'Save'];
     var buttonFuncArray = [reset, saveImg];
     for (let i = 0; i < buttonNameArray.length; i++)
     {
         let b = createButton(buttonNameArray[i]);
         b.style("width", "55px");
-        b.position(butPosX + i*65, butPosY);
         b.mousePressed(buttonFuncArray[i]);
+        buttonArray.push(b);
     }
     //セレクトボックス
-    var selPosX = butPosX;
-    var selPosY = butPosY + 35;
     let KeyArray = [
         ['white', 'black'], //背景色
         ['white', 'black', 'red', 'green', 'blue'],  //帯の色
@@ -49,7 +39,6 @@ function setup() {
     let SelArray = [];
     for (let i = 0; i < KeyArray.length; i++) {
         let sel = createSelect();
-        sel.position(selPosX + 65*i, selPosY);
         for (let j = 0; j < KeyArray[i].length; j++) {
             sel.option(KeyArray[i][j], ValueArray[i][j]);
         }
@@ -63,24 +52,20 @@ function setup() {
     selBg.changed(drawMain);
     selColor.changed(drawMain);
     selComposition.changed(drawMain);
-    //細かさ，乱雑さ決めるスライダー
-    var sliPosX = selPosX;
-    var sliPosY = selPosY + 35; 
-    sliDiv = createSlider(10, 100, 30, 5);
-    sliDiv.position(sliPosX, sliPosY);
-    sliDiv.style('width', '80px');
-    sliDiv.input(() => {
+    //細かさ，ずれ決める
+    inpDiv = createInput(30, 'number');
+    inpDiv.style('width', '55px');
+    inpDiv.input(() => {
         drawMain();
     });
-    sliOff = createSlider(0, 0.5, 0.2, 0.01);
-    sliOff.position(sliPosX + 80, sliPosY);
-    sliOff.style('width', '80px');
-    sliOff.input(() => {
+    inpOff = createInput(0.2, 'number');
+    inpOff.style('width', '55px');
+    inpOff.input(() => {
         drawMain();
     });
-    let txt = createDiv('帯本数　　　　乱雑さ');
+    txt = createDiv('帯本数 　　ずれ');
     txt.style('font-size', '12px');
-    txt.position(sliPosX, sliPosY + 18);
+    windowResized();
     noStroke();
     vortex = new Vortex(random(100));
     vortex.drawMe();
@@ -96,8 +81,11 @@ class Vortex {
     fill(selColor.value());
     translate(selComposition.value() * width/2, 0, -height);    //回転中心
     rotateY(selComposition.value() * PI / 9);   //左寄り，右寄りなら，正面から少し傾ける
-    d = sliDiv.value();
-    factor1 = sliOff.value();
+    d = inpDiv.value();
+    if (d > 100) {  //帯の本数が多すぎる場合，描画を中止する
+        return 0;
+    }
+    factor1 = inpOff.value();
     for (let i = 0; i < d; i++) {
         rotateZ(2 * PI / d);
         this.drawLine(i);   //一つの帯を描画

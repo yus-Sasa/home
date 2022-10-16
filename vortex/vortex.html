@@ -29,18 +29,18 @@
 
   <main>
     <h2 class="mini-title">UIの使い方</h2>
-    <p class="use">Reset→各帯の形を変更</p>
+    <p class="use">Reset→乱数を変更</p>
     <p class="use">Save→描画を保存</p>
-    <p class="use">white/black→背景色の指定</p>
-    <p class="use">white/black/red/green/blue→帯の色の指定</p>
-    <p class="use">left/center/right→構図の指定</p>
-    <p class="use">帯本数→帯の数の指定</p>
-    <p class="use">乱雑さ→帯同士のずれの指定</p>
+    <p class="use">white/black→背景色の変更</p>
+    <p class="use">white/black/red/green/blue→帯の色の変更</p>
+    <p class="use">left/center/right→構図の変更</p>
+    <p class="use">帯本数→帯の数(≤100)の変更</p>
+    <p class="use">ずれ→隣り合った帯同士のずれ(推奨値:0~0.5)の変更</p>
 
 
     <h2 class="mini-title">コンセプト</h2>
-    <p class="concept">中心から等間隔に帯が出ていて，各帯の形は，パーリンノイズと呼ばれる乱数によって決まっている。パーリンノイズは乱数を生成する関数であるが，引数（関数に渡す値）が近ければ近い値，同じであれば同じ値を返す。
-    <br>隣り合った帯に関して，対応する部分で同じ引数を与えると，帯の形は同一になる（「乱雑さ」スライダーが0の場合）。「乱雑さ」スライダーを右に動かすと帯間の対応関係がずれ，帯の形が少し変化する。</p>
+    <p class="concept">渦の中心から等間隔に帯が出ていて，各帯の形は乱数の列によって決まっている。
+    <br>隣り合った帯で同一の乱数列を用いる場合，全ての帯の形は同一になる（「ずれ」が0の場合）。「ずれ」の値を大きくすると帯間での乱数列の共通部分が減り，帯の形が変化する。</p>
   </main>  
 
   <footer class="footer">

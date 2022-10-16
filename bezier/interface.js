@@ -18,3 +18,24 @@ function reDraw() { //初期化
     drawHandle();
     drawMain();
 }
+
+function windowResized(){     //UI位置はここで決める
+    let centerWidth = document.getElementsByClassName('wrapper')[0].clientWidth;
+    let centerHeight = document.getElementsByClassName('wrapper')[0].clientHeight;
+    let scale = min(centerWidth / 3840, centerHeight / 2160);
+    let scaledWidth = min(scale * 3840, centerWidth);
+    let scaledHeight = min(scale * 2160, centerHeight);
+    canvas.style('width', String(scaledWidth)+'px');
+    canvas.style('height', String(scaledHeight)+'px');
+
+    var butPosX = (windowWidth - scaledWidth) / 2 + 7;
+    var butPosY = 104 + scaledHeight;
+    b.position(butPosX, butPosY);
+
+    var selPosX = butPosX;
+    var selPosY = butPosY + 35;
+    selBg.position(selPosX, selPosY);
+    selNum.position(selPosX + 65, selPosY);
+
+    slider.position(selPosX + 130, selPosY);
+}
