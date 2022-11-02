@@ -62,3 +62,17 @@ p {
     margin: 0 0 0 0;
     padding-bottom: 10px;
 }
+.window {
+	position: fixed;/*fixedを設定して固定*/
+    opacity: 0;
+    padding-bottom: 0px;
+    border: 0;
+    top: 20px;
+    right: 20px;
+    transition: opacity 100ms 0s ease;
+}
+.window.appear {
+    opacity: 1;
+    transition: all 100ms 0s ease;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+}

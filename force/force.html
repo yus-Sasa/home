@@ -3,8 +3,10 @@
 <head>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/p5.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/addons/p5.dom.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="sketch.js"></script>
   <script src="interface.js"></script>
+  <script src="../sub_canvas.js"></script>
   <link rel = "stylesheet" href="../style.css">
   <meta name="robots" content="noindex,nofollow,noarchive" />
 </head>
@@ -21,9 +23,9 @@
     </nav>
   </header>
 
-
+  <h1 class="title">Force</h1>
   <div id="P5Canvas" class="canvas">
-    <h1 class="title">Force</h1>
+    <canvas id="subCanvas" class="window" width="400" height="225"></canvas>
   </div>
 
   <main>
@@ -35,9 +37,9 @@
     <p class="use">white/black→描画を停止し，背景色を変更</p>
     <p class="use">color/red/green/blue→描画を停止し，軌跡の色を変更</p>
 
-    <h2 class="mini-title">コンセプト</h2>
-    <p class="concept">格子状に配置された物体と，それらを引力で引き寄せる質点が存在している（質点は描画されない）。質点は，自らも移動しながら各物体を引き寄せる。一方，各物体には初速が与えられていて，質点に引き寄せられることでその速度を変化させながら移動し，軌跡を描く。ただし，物体は1ステップの間に上下左右のいずれか1つの方向にしか進めないという制約をつけている。また，速さが小さい場合には円が描かれる。</p>
-    <p class="concept">なお，力と速度の計算方法は，実際の物理法則とは敢えて異なるものにしている。</p>
+    <h2 class="mini-title">解説</h2>
+    <p class="concept">物体が，質点に引き寄せられるときに描く軌跡をイメージした作品である。</p>
+    <p class="concept">質点は自らも移動しながら，物体を引き寄せる（質点は描画されない）。物体は，質点からの引力を受け，速度を変化させながら移動し，軌跡を描く。ここで，物体は上下左右のいずれか一つの方向にしか進めないという制約をつけている。また，速さが小さい場合には円が描かれる。</p>
   </main>  
 
   <footer class="footer">

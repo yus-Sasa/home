@@ -8,6 +8,8 @@ function reset() {
     fill(0, 0, selBg.value());
     rect(0, 0, width, height);
     init();
+    var real_canvas = canvas.canvas;
+    HTMLcontext.drawImage(real_canvas, 0, 0, width, height, 0, 0, 400, 225);
 }
 function saveImg() {
     saveCanvas(canvas, 'force', 'png');  
@@ -22,6 +24,8 @@ function reDraw() { //背景色or軌跡の色が変わったとき
         o.c = color(o.calcColor(), 100, 100);
         o.drawMe();
     }
+    var real_canvas = canvas.canvas;
+    HTMLcontext.drawImage(real_canvas, 0, 0, width, height, 0, 0, 400, 225);
 }
 
 function windowResized() {  //UI位置はここで決める

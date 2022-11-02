@@ -16,6 +16,8 @@ function drawMain() {
     rect(0, 0, width, height);
     image(main, 960, 540);
     image(handle, 0, 0);
+    var real_canvas = canvas.canvas;
+    HTMLcontext.drawImage(real_canvas, 960, 540, width / 2, height / 2, 0, 0, 400, 225);
 }
 function drawStep(midPt, i) {
     while (midPt.length > 1) {

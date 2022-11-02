@@ -4,16 +4,21 @@ var w = 1.0;//中心部での帯の太さ
 var factor1 = 0.2;  //隣り合った帯の乱雑さの差
 var factor2 = 0.01; //一つの帯内での乱雑さ
 var vortex;
-var canvas;
+var canvas, main;
 var buttonArray = [];
 var selBg, selColor, selComposition;    //セレクトボックス
 var inpDiv, inpOff, txt;
 var none;   //画面をリセットしたときだけtrueになる
+var HTMLcontext;
 
 function setup() {
-    //準備
-    canvas = createCanvas(1920, 1080, WEBGL);
+    //準備    
+    canvas = createCanvas(1920, 1080);
     canvas.parent("P5Canvas");
+    var HTMLcanvas = document.getElementById("subCanvas");
+    HTMLcontext = HTMLcanvas.getContext("2d");
+    main = createGraphics(1920, 1080, WEBGL);   //3Dはここに描く
+
     //UIの配置
     //ボタン
     var buttonNameArray = ['Reset', 'Save'];
@@ -67,6 +72,7 @@ function setup() {
     txt.style('font-size', '12px');
     windowResized();
     noStroke();
+    main.noStroke();
     vortex = new Vortex(random(100));
     vortex.drawMe();
 }
@@ -77,19 +83,25 @@ class Vortex {
   }
 
   drawMe() {
-    background(selBg.value());
-    fill(selColor.value());
-    translate(selComposition.value() * width/2, 0, -height);    //回転中心
-    rotateY(selComposition.value() * PI / 9);   //左寄り，右寄りなら，正面から少し傾ける
+    fill(selBg.value());
+    rect(0, 0, width, height);  //キャンバスを背景で塗りつぶす
+    main.push();    //座標系の保存
+    main.fill(selColor.value());
+    main.translate(selComposition.value() * width/2, 0, -height);    //回転中心
+    main.rotateY(selComposition.value() * PI / 9);   //左寄り，右寄りなら，正面から少し傾ける
     d = inpDiv.value();
     if (d > 100) {  //帯の本数が多すぎる場合，描画を中止する
         return 0;
     }
     factor1 = inpOff.value();
     for (let i = 0; i < d; i++) {
-        rotateZ(2 * PI / d);
+        main.rotateZ(2 * PI / d);
         this.drawLine(i);   //一つの帯を描画
     }
+    image(main, 0, 0);
+    main.pop();
+    var real_canvas = canvas.canvas;
+    HTMLcontext.drawImage(real_canvas, 0, 0, width, height, 0, 0, 400, 225);
   }
 
   drawLine(i) {
@@ -104,12 +116,12 @@ class Vortex {
         let arg = noise(this.off + i * factor1 + j * factor2) * 2 * PI;
         dx = cos(arg);
         dy = sin(arg);
-        beginShape();
-        vertex(x, y, z);
-        vertex(x + dx, y + dy, z);
-        vertex(x + dx, y + dy, z - localW);
-        vertex(x, y, z - localW);
-        endShape();
+        main.beginShape();
+        main.vertex(x, y, z);
+        main.vertex(x + dx, y + dy, z);
+        main.vertex(x + dx, y + dy, z - localW);
+        main.vertex(x, y, z - localW);
+        main.endShape();
         //x, y, z, localWを更新する
         x += dx;
         y += dy;

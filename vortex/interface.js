@@ -1,4 +1,5 @@
 function drawMain() {
+    main.clear();   //3Dのリセット
     vortex.drawMe();
 }
 function reset() { 

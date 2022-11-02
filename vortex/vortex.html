@@ -2,9 +2,11 @@
 <html>
 <head>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/p5.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/addons/p5.dom.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/addons/p5.dom.min.js"></script>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="sketch.js"></script>
   <script src="interface.js"></script>
+  <script src="../sub_canvas.js"></script>
   <link rel = "stylesheet" href="../style.css">
   <link rel = "stylesheet" href="style_vortex.css">
   <meta name="robots" content="noindex,nofollow,noarchive" />
@@ -22,9 +24,9 @@
     </nav>
   </header>
 
-
+  <h1 class="title">Vortex</h1>
   <div id="P5Canvas" class="canvas">
-    <h1 class="title">Vortex</h1>
+    <canvas id="subCanvas" class="window" width="400" height="225"></canvas>
   </div>
 
   <main>
@@ -34,11 +36,11 @@
     <p class="use">white/black→背景色の変更</p>
     <p class="use">white/black/red/green/blue→帯の色の変更</p>
     <p class="use">left/center/right→構図の変更</p>
-    <p class="use">帯本数→帯の数(≤100)の変更</p>
+    <p class="use">帯本数→帯の数(≦100)の変更</p>
     <p class="use">ずれ→隣り合った帯同士のずれ(推奨値:0~0.5)の変更</p>
 
 
-    <h2 class="mini-title">コンセプト</h2>
+    <h2 class="mini-title">解説</h2>
     <p class="concept">渦の中心から等間隔に帯が出ていて，各帯の形は乱数の列によって決まっている。
     <br>隣り合った帯で同一の乱数列を用いる場合，全ての帯の形は同一になる（「ずれ」が0の場合）。「ずれ」の値を大きくすると帯間での乱数列の共通部分が減り，帯の形が変化する。</p>
   </main>  

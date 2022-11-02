@@ -5,6 +5,7 @@ var dia;
 var buttonArray = [];
 var selBg, selColor;    //セレクトボックス
 var hueValue;
+var HTMLcontext;
 
 function setup() {
     //準備
@@ -14,6 +15,9 @@ function setup() {
     frameRate(1);
     dia = dist(0, 0, width, height);
     canvas.parent("P5Canvas");
+    var HTMLcanvas = document.getElementById("subCanvas");
+    HTMLcontext = HTMLcanvas.getContext("2d");
+
     //UIの配置
     //ボタン
     var buttonNameArray = ['Start', 'Pause', 'Reset', 'Save'];
@@ -60,6 +64,8 @@ function draw() {
         o = objArr[i];
         o.step();
     }
+    var real_canvas = canvas.canvas;
+    HTMLcontext.drawImage(real_canvas, 0, 0, width, height, 0, 0, 400, 225);
 }
 
 //描画の際に一番最初に動く関数

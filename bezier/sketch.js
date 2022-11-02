@@ -8,11 +8,15 @@ var selected;   //動かされている制御点のindex
 var bgcolor;    //canvas背景
 var selBg, selNum;    //セレクトボックス
 var slider, b;
+var HTMLcontext;
 
 function setup() {
     //準備
     canvas = createCanvas(3840, 2160);  //これはただの入れ物であるcanvas
     canvas.parent("P5Canvas");
+    var HTMLcanvas = document.getElementById("subCanvas");
+    HTMLcontext = HTMLcanvas.getContext("2d");
+
     //そのcanvasの背景色設定
     let element = document.getElementsByClassName('wrapper')[0];
     let style = window.getComputedStyle(element);
