@@ -16,6 +16,7 @@ function drawMain() {
     rect(0, 0, width, height);
     image(main, 960, 540);
     image(handle, 0, 0);
+    //小窓も反映
     var real_canvas = canvas.canvas;
     HTMLcontext.drawImage(real_canvas, 960, 540, width / 2, height / 2, 0, 0, 400, 225);
 }

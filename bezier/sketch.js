@@ -14,6 +14,7 @@ function setup() {
     //準備
     canvas = createCanvas(3840, 2160);  //これはただの入れ物であるcanvas
     canvas.parent("P5Canvas");
+    //小窓用
     var HTMLcanvas = document.getElementById("subCanvas");
     HTMLcontext = HTMLcanvas.getContext("2d");
 

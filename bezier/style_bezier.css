@@ -2,13 +2,15 @@
 .flex {
     display: flex; /*横並び*/
   }
-.flex .image {
+.flex .images{
     flex-shrink: 0;
     width: 30%; /*画像サイズ指定*/
     margin: 0 15px 0 15px;
-    padding: 0;
 }
-.flex .image img {
+.image{
+    margin: 0;
+}
+.images img{
     width: 100%;
     height: auto;
 }

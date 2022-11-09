@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <title>Brzier Curve</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.2/p5.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -39,17 +40,22 @@
     <p class="use">(スライダー)→線の色の変更</p>
 
     <h2 class="mini-title">解説</h2>
+    <p class="concept">ベジェ曲線の描画過程を表した作品である。拡大しなければ見えないが，薄いグレーの小さな点をなめらかに結んだ曲線がn次ベジェ曲線となる。</p>
     <div class = "flex">
       <div class="box-text">
-        <p class="concept">n個の制御点によって定まる曲線をn次ベジェ曲線という。<br>
-        n個の点をp<sub>1</sub>, p<sub>2</sub>, ... , p<sub>n</sub>とする。p<sub>i</sub>とp<sub>i+1</sub>をa:1-aに内分する点をp'<sub>i</sub>とする(i=1, 2, ... , n-1，aは0≦a≦1の定数)。<br>
-        p'<sub>1</sub>, p'<sub>2</sub>, ... , p'<sub>n-1</sub>に対しても同様の内分を行い，これを繰り返していくと，最後に1点p<sub>a</sub>が得られる。aを0から1まで動かしたときに得られたp<sub>a</sub>の軌跡をn次ベジェ曲線という。</p>
-        <p class="concept">上の描画は，ベジェ曲線の描画過程を表しており，カラーの線は内分点同士を結んだ線である。拡大しなければ見えないが，薄いグレーの小さな点をなめらかに結んだ曲線がn次ベジェ曲線となる。</p>
+        <p class="concept"><b>ベジェ曲線</b><br>
+          n個の制御点によって定まる曲線をn次ベジェ曲線という。<br>
+        n個の点をp<sub>1</sub>, p<sub>2</sub>, ... , p<sub>n</sub>とする。p<sub>i</sub>とp<sub>i+1</sub>をa:1-aに内分する点をp'<sub>i</sub>とする(i=1, 2, ... , n-1，aは0≦a≦1の定数)。この方法により，p'<sub>1</sub>, p'<sub>2</sub>, ... , p'<sub>n-1</sub>を得る。一連の処理で，n個の点からn-1個の点が得られたことに注意されたい。<br>
+        次に，p'<sub>1</sub>, p'<sub>2</sub>, ... , p'<sub>n-1</sub>に対しても同様の内分処理を行い，p''<sub>1</sub>, p''<sub>2</sub>, ... , p''<sub>n-2</sub>を得る。2点以上残っている限り，同様の内分処理を繰り返すと，最後に1点が得られるが，これをp<sub>a</sub>とおく。<br>
+        定数としていたaを，0から1まで動かしたときに得られたp<sub>a</sub>の軌跡をn次ベジェ曲線という。</p>
         <p class="concept">なお，ソースコードは以下の文献を参考にした。<br>
           <a href = "https://gihyo.jp/book/2019/978-4-297-10463-4" target="_blank" rel="noopener noreferrer">数学から創るジェネラティブアート
           ―Processingで学ぶかたちのデザイン</a></p>
       </div>
-      <figure class = "image"><img src="bezier_explanation.png" alt="解説画像"></figure>
+      <div class="images">
+        <figure class="image"><img src="bezier_explanation.png" alt="解説画像"></figure>
+        <figure class="image"><img src="bezier_exp_anim.gif" alt="解説アニメ"></figure>
+      </div>
     </div>
   </main>  
 

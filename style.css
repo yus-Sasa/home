@@ -7,14 +7,8 @@ html * {
 }
 body {
     margin: 0 0 0 0;
-    background-color: #D5A5FF;
-    background-image: repeating-linear-gradient(-45deg, #C980D6 12.5%, transparent 12.5%, transparent 87.5%, #C980D6 12.5%, #C980D6),
-                      repeating-linear-gradient(-45deg, #C980D6 12.5%, transparent 12.5%, transparent 87.5%, #C980D6 12.5%, #C980D6),
-                      repeating-linear-gradient(-45deg, #C980D6 12.5%, transparent 12.5%, transparent 87.5%, #C980D6 12.5%, #C980D6),
-                      repeating-linear-gradient(-45deg, #C980D6 12.5%, transparent 12.5%, transparent 87.5%, #C980D6 12.5%, #C980D6);
-    background-position: 0 0, 20px 20px, 40px 40px, 60px 60px;
-    background-size: 80px 80px;
-
+    background: linear-gradient(to left,
+    darkorchid 0%, thistle 3%, thistle 97%,  darkorchid 100%);
 }
 .wrapper {
     margin: 0 auto 0 auto;
