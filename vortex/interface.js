@@ -3,6 +3,7 @@ function drawMain() {
     vortex.drawMe();
 }
 function reset() { 
+    main.clear();   //3Dのリセット
     vortex = new Vortex(random(100));
     vortex.drawMe();
 }

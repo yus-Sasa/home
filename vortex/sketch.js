@@ -84,15 +84,15 @@ class Vortex {
 
   drawMe() {
     fill(selBg.value());
-    rect(0, 0, width, height);  //キャンバスを背景で塗りつぶす
-    main.push();    //座標系の保存
-    main.fill(selColor.value());
-    main.translate(selComposition.value() * width/2, 0, -height);    //回転中心
-    main.rotateY(selComposition.value() * PI / 9);   //左寄り，右寄りなら，正面から少し傾ける
+    rect(0, 0, width, height);  //キャンバスを背景で塗りつぶす    
     d = inpDiv.value();
     if (d > 100) {  //帯の本数が多すぎる場合，描画を中止する
         return 0;
     }
+    main.push();    //座標系の保存
+    main.fill(selColor.value());
+    main.translate(selComposition.value() * width/2, 0, -height);    //回転中心
+    main.rotateY(selComposition.value() * PI / 9);   //左寄り，右寄りなら，正面から少し傾ける
     factor1 = inpOff.value();
     for (let i = 0; i < d; i++) {
         main.rotateZ(2 * PI / d);
