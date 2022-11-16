@@ -38,7 +38,7 @@ function setup() {
     ];
     let ValueArray = [
         ["#ffffff", "#000000"],
-        ["#ffffff96", "#00000096", "#e1000096", "#00e10096", "#0000e196"],
+        ["#ffffffc7", "#000000c7", "#e10000c7", "#00e100c7", "#0000e1c7"],
         [-1, 0, 1]
     ];
     let SelArray = [];
@@ -52,7 +52,7 @@ function setup() {
     selBg = SelArray[0];
     selColor = SelArray[1];
     selComposition = SelArray[2];
-    selColor.selected("#00000096"); //帯の色の既定は黒
+    selColor.selected("#000000c7"); //帯の色の既定は黒
     //指定が変わったら書き直す
     selBg.changed(drawMain);
     selColor.changed(drawMain);

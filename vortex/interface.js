@@ -8,7 +8,7 @@ function reset() {
     vortex.drawMe();
 }
 function saveImg() {
-    saveCanvas(canvas, 'vortex', 'png');  
+    saveCanvas(main, 'vortex', 'png');  
 }
 
 function windowResized() {    //UI位置はここで決める
